@@ -1,12 +1,12 @@
 import { Component, inject, Input, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { ProductService } from '../../../shared/services/product.service';
 import { Product } from '../../../shared/models/Product.model';
 import { CartService } from '../../../shared/services/cart.service';
 
 @Component({
   selector: 'app-product-detail',
-  imports: [CommonModule],
+  imports: [CommonModule,NgOptimizedImage],
   templateUrl: './product-detail.component.html',
   styleUrl: './product-detail.component.css'
 })

@@ -8,11 +8,13 @@ import { Product } from '../models/Product.model';
 export class ProductService {
   private http=inject(HttpClient)
 
-  constructor() {}
-  getProducts(categori_id?:string){
+  getProducts(params: {categori_id?:string;category_slug?:string}){
     const url=new URL('https://api.escuelajs.co/api/v1/products')
-    if (categori_id) {
-      url.searchParams.set('categoryId',categori_id)
+    if (params.categori_id) {
+      url.searchParams.set('categoryId',params.categori_id)
+    }
+    if (params.category_slug) {
+      url.searchParams.set('categorySlug',params.category_slug)
     }
     return this.http.get<Product[]>(url.toString())
   }

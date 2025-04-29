@@ -1,4 +1,4 @@
-import { Component, Input, signal, SimpleChanges } from '@angular/core';
+import { Component, input, Input, signal, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -7,8 +7,11 @@ import { CommonModule } from '@angular/common';
   templateUrl: './counter.component.html',
   styleUrl: './counter.component.css'
 })
-export class CounterComponent {
-  @Input({required:true}) duration=0;
+export class CounterComponent { 
+  //input signañ
+  duration=input.required<number>()
+  doubleDuration=signal(0)
+  //input normal
   @Input({required:true}) message='';
   counter=signal(0)
   counterRef:number|undefined
@@ -19,6 +22,7 @@ export class CounterComponent {
     //una vez
     console.log("constructoe");
     console.log('_'.repeat(10))
+    
   }
 
   ngOnChanges(changes:SimpleChanges){
@@ -28,6 +32,7 @@ export class CounterComponent {
     console.log(changes);
     const duration=changes["duration"]
     if(duration && duration.currentValue !==duration.previousValue){
+      this.doubleDuration.set(this.duration()*2)
       this.doSometing()
     }
     console.log(duration);

@@ -5,7 +5,7 @@
                 <a routerLink="/">All</a>
             </li>
             <li *ngFor="let categori of categories()">
-                <a routerLink="/"[queryParams]="{categori_id:categori.id}">{{categori.name}}</a>
+                <a routerLink="/category/{{categori.slug}}">{{categori.name}}</a>
             </li>
         </ul>
     </div>

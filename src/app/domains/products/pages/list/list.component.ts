@@ -21,7 +21,7 @@ export class ListComponent {
   private productServiceImp=inject(ProductService)
   private categoryServiceImpl=inject(CategoryService)
 
-  @Input()categori_id?:string
+  @Input()slug?:string
 
   ngOnInit(){
     this.getProducts();
@@ -40,7 +40,7 @@ export class ListComponent {
   }
 
   private getProducts(){
-    this.productServiceImp.getProducts(this.categori_id).subscribe({next:(products)=>{
+    this.productServiceImp.getProducts({category_slug:this.slug}).subscribe({next:(products)=>{
       this.products.set(products)
     },
     error:()=>{
